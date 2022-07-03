@@ -6,38 +6,14 @@ void	ft_error(char *str)
 	exit(1);
 }
 
-int	ft_getlen(char **argv)
-{
-	int	i;
-
-	i = 0;
-	while(*(++argv))
-		i++;
-	return (i);
-}
-
-void	ft_getarg(char **argv, p_swap *a)
-{
-	int	i;
-
-	a->stack = ft_calloc(a->len, 1);
-	i = 0;
-	while (argv[++i])
-	{
-		a->stack[i - 1] = ft_atoi(argv[i]);
-	}
-}
-
 void	ft_printstack(p_swap *s)
 {
 	int	i;
 
-	i = 0;
-	while (i < s->len)
-	{
-		ft_printf("%d\n",s->stack[i]);
-		i++;
-	}
+	i = -1;
+
+	while (++i < s->len)
+		ft_printf("[%d]: %d\n",i,s->stack[i]);
 }
 
 int	main(int argc, char **argv)
@@ -47,11 +23,24 @@ int	main(int argc, char **argv)
 
 	a = ft_calloc(sizeof(p_swap), 1);
 	b = ft_calloc(sizeof(p_swap), 1);
-	if (argc > 1)
+	if (ft_argcontrol(argc, argv))
 	{
 		a->len = ft_getlen(argv);
+		a->stack = ft_calloc(a->len, 1);
+		b->stack = ft_calloc(a->len, 1);
+		ft_stacklen(b);
+		ft_printf("%d\n", b->len);
 		ft_getarg(argv, a);
 		ft_printstack(a);
+		ft_printf(" b :  Rez \n");
+		ft_printstack(b);
+		ft_printf("\n Rez \n");		
+		push(b,a);
+		ft_stacklen(b);
+		ft_stacklen(a);
+		ft_printstack(a);
+		ft_printf("\n b :  Rez \n");	
+		ft_printstack(b);
 	}
 	else
 		ft_error("Invalid Input.");
