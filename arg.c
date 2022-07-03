@@ -28,16 +28,6 @@ void	ft_stacklen(p_swap *x)
 	x->len = i;
 }
 
-int	ft_getlen(char **argv)
-{
-	int	i;
-
-	i = 0;
-	while(*(++argv))
-		i++;
-	return (i);
-}
-
 void	ft_getarg(char **argv, p_swap *a)
 {
 	int	i;

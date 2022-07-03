@@ -16,6 +16,8 @@ void push(p_swap *a, p_swap *b)
 	int	i;
 
 	i = a->len;
+	a->len++;
+	b->len--;
 	while(i)
 	{
 		a->stack[i] = a->stack[i - 1];
