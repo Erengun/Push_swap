@@ -24,11 +24,14 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -c $^
 
 clean:
+	@make clean -C ./libft
 	@rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
+	@make fclean -C ./libft
 	@rm -f $(NAME)
 
 re: fclean all
+	@make re -C ./libf
 
 .PHONY: all clean fclean re bonus

@@ -18,16 +18,6 @@ int	ft_argcontrol(int argc, char **argv)
 	return (1);
 }
 
-void	ft_stacklen(p_swap *x)
-{
-	int	i;
-
-	i = 0;
-	while(x->stack[i])
-		i++;
-	x->len = i;
-}
-
 void	ft_getarg(char **argv, p_swap *a)
 {
 	int	i;

@@ -5,32 +5,43 @@ void	swap(p_swap *x)
 {
 	int	temp;
 
-	temp = x->stack[0];
-	x->stack[0] = x->stack[1];
-	x->stack[1] = temp;
+	if (x->stack[0] && x->stack[1])
+	{
+		temp = x->stack[0];
+		x->stack[0] = x->stack[1];
+		x->stack[1] = temp;
+	}
 }
 
-void push(p_swap *a, p_swap *b)
-{
-	int temp;
-	int	i;
+// void	pb(p_swap *a, p_swap *b)
+// {
+// 	int	temp;
+// 	int	i;
 
-	i = a->len;
-	a->len++;
-	b->len--;
-	while(i)
-	{
-		a->stack[i] = a->stack[i - 1];
-		i--;
-	}
-	a->stack[0] = b->stack[0];
-	ft_printf("%d to %d\n", a->stack[0], b->stack[0]);
-	while(i < b->len - 1)
-	{
-		b->stack[i] = b->stack[i + 1];
-		ft_printf("%d to %d\n", b->stack[i], b->stack[i+1]);
-		i++;
-	}
-	b->len = ft_getlen(b->stack);
-	a->len = ft_getlen(a->stack);
+// 	i = b->len;
+// 	temp = a->stack[0];
+// 	while(i > 0)
+// 	{
+// 		b->stack[i] = b->stack[i - 1];
+// 		i--;
+// 	}
+// 	b->stack[0] = temp;
+// 	i = 0;
+// 	while (i < a->len - 1)
+// 	{
+// 		a->stack[i] = a->stack[i + 1];
+// 		i++;
+// 	}
+// 	a->len--;
+// 	b->len++;
+// }
+
+void	pb(p_swap *a, p_swap *b)
+{
+	a->len--;
+	b->len++;
+	if(a->len > 0)
+		b->stack[b->len] = a->stack[a->len];
+	ft_printf("%d\n", a->len);
+
 }
