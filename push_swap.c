@@ -50,6 +50,9 @@ int	main(int argc, char **argv)
 		pb(a,b);
 		ft_printstack(a);
 		ft_printstack(b);
+		ft_printf(RED"Pb done"RST);
+		rotate(a);
+		ft_printstack(a);
 	}
 	else
 		ft_error("Invalid Input.");

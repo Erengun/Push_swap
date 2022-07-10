@@ -1,6 +1,5 @@
 #include "push.h"
 
-
 void	swap(p_swap *x)
 {
 	int	temp;
@@ -13,35 +12,36 @@ void	swap(p_swap *x)
 	}
 }
 
-// void	pb(p_swap *a, p_swap *b)
-// {
-// 	int	temp;
-// 	int	i;
-
-// 	i = b->len;
-// 	temp = a->stack[0];
-// 	while(i > 0)
-// 	{
-// 		b->stack[i] = b->stack[i - 1];
-// 		i--;
-// 	}
-// 	b->stack[0] = temp;
-// 	i = 0;
-// 	while (i < a->len - 1)
-// 	{
-// 		a->stack[i] = a->stack[i + 1];
-// 		i++;
-// 	}
-// 	a->len--;
-// 	b->len++;
-// }
-
-void	pb(p_swap *a, p_swap *b)
+void	push(p_swap *a, p_swap *b)
 {
-	a->len--;
-	b->len++;
-	if(a->len > 0)
-		b->stack[b->len] = a->stack[a->len];
-	ft_printf("%d\n", a->len);
+	a->len++;
+	b->len--;
+	if(b->len > 0)
+		a->stack[a->len] = b->stack[b->len];
+}
 
+void	ss(p_swap *a, p_swap *b)
+{
+	swap(a);
+	swap(b);
+}
+
+void	rotate(p_swap *x)
+{
+	int	temp;
+
+	temp = x->stack[0];
+	ft_memmove(&x->stack[0], &x->stack[1], x->len * 4);
+	x->stack[x->len - 1] = temp;
+	ft_printstack(x);
+}
+
+void	r_rotate(p_swap *x)
+{
+	int	temp;
+
+	temp = x->stack[x->len-1];
+	ft_memmove(&x->stack[1], &x->stack[0], x->len * 4);
+	x->stack[0] = temp;
+	ft_printstack(x);
 }
