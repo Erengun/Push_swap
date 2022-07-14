@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 19:01:18 by egun              #+#    #+#             */
-/*   Updated: 2022/07/13 20:13:04 by egun             ###   ########.fr       */
+/*   Updated: 2022/07/13 20:31:02 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		minIndex(int *arr, int i, int j)
 
 void	selectinSort(int *stack, int size, int index)
 {
+	// Yes it's recursive :)
 	int	min;
 
 	if (size == index)

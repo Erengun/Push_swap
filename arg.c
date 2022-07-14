@@ -1,5 +1,19 @@
 #include "push.h"
 
+void	ft_error(char *msg)
+{
+	ft_printf(RED"%s\n"RST, msg);
+	ft_printf("error\n");
+	exit(1);
+}
+
+void	destroy(p_swap *a, p_swap *b, p_swap *c)
+{
+	free(a->stack);
+	free(b->stack);
+	free(c->stack);
+}
+
 int	ft_argcontrol(int argc, char **argv)
 {
 	int	i;
@@ -32,5 +46,17 @@ void	ft_getarg(char **argv, p_swap *a, p_swap *c)
 	while (argv[++i])
 		c->stack[i - 1] = ft_atoi(argv[len--]);
 	selectinSort(c->stack, c->len, 0);
-	ft_printstack(c);
 }
+
+int	sortCheck(int *stack)
+{
+	int i;
+
+	i = 0;
+	while (stack[++i + 1])
+	{
+		if (stack[i] < stack[i+1])
+			ft_error("Argument already sorted lol");
+	}
+	return(1);
+}		

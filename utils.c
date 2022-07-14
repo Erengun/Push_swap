@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 20:10:58 by egun              #+#    #+#             */
-/*   Updated: 2022/07/13 20:23:41 by egun             ###   ########.fr       */
+/*   Updated: 2022/07/13 20:45:31 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,4 @@ void	toIndex(p_swap *a, p_swap *c)
 		a->stack[i] = j;
 		i++;
 	}
-	ft_printstack(c);
-	ft_printf(RED"--------------\n"RST);
-	ft_printstack(a);
 }

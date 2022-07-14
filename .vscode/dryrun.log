@@ -1,6 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/spike/Desktop/Push_swap'
-make: Leaving directory '/home/spike/Desktop/Push_swap'
- 
-make: *** No targets specified and no makefile found.  Stop.
-

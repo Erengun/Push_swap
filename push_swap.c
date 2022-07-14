@@ -10,12 +10,6 @@ int	ft_getlen(char **argv)
 	return (i);
 }
 
-void	ft_error(char *str)
-{
-	ft_printf("%s",str);
-	exit(1);
-}
-
 void	ft_printstack(p_swap *x)
 {
 	int	i;
@@ -26,14 +20,17 @@ void	ft_printstack(p_swap *x)
 		ft_printf("%c[%d]: %d\n", x->id, i, x->stack[i]);
 }
 
-void start_struct(p_swap *a, p_swap *b, p_swap *c)
+void start_struct(p_swap *a, p_swap *b, p_swap *c, char **argv)
 {
-	a->id = 'A';
-	b->id = 'B';
-	c->id = 'C';
+	a->len = ft_getlen(argv);
+	c->len = a->len;
+	a->id = 'a';
+	b->id = 'b';
+	c->id = 'c';
 	a->stack = ft_calloc(sizeof(int), a->len);
 	b->stack = ft_calloc(sizeof(int), a->len);
 	c->stack = ft_calloc(sizeof(int), a->len);
+	ft_getarg(argv, a, c);
 }
 
 int	main(int argc, char **argv)
@@ -47,13 +44,12 @@ int	main(int argc, char **argv)
 		a = ft_calloc(sizeof(p_swap),1);
 		b = ft_calloc(sizeof(p_swap),1);
 		c = ft_calloc(sizeof(p_swap),1);
-		a->len = ft_getlen(argv);
-		c->len = a->len;
-		start_struct(a,b,c);
-		ft_getarg(argv, a, c);
+		start_struct(a,b,c, argv);
 		ft_printstack(a);
 		selectinSort(c->stack, c->len, 0);
 		toIndex(a,c);
+		radix_sort(a,b);
+		destroy(a,b,c);
 	}
 	else
 		ft_error("Invalid Input.");
