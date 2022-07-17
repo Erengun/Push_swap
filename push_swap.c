@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/17 17:34:43 by egun              #+#    #+#             */
+/*   Updated: 2022/07/17 20:55:05 by egun             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push.h"
 
 int	ft_getlen(char **argv)
@@ -5,12 +17,12 @@ int	ft_getlen(char **argv)
 	int	i;
 
 	i = 0;
-	while(*(++argv))
+	while (*(++argv))
 		i++;
 	return (i);
 }
 
-void	ft_printstack(p_swap *x)
+void	ft_printstack(t_swap *x)
 {
 	int	i;
 
@@ -20,7 +32,7 @@ void	ft_printstack(p_swap *x)
 		ft_printf("%c[%d]: %d\n", x->id, i, x->stack[i]);
 }
 
-void start_struct(p_swap *a, p_swap *b, p_swap *c, char **argv)
+void	start_struct(t_swap *a, t_swap *b, t_swap *c, char **argv)
 {
 	a->len = ft_getlen(argv);
 	c->len = a->len;
@@ -31,27 +43,32 @@ void start_struct(p_swap *a, p_swap *b, p_swap *c, char **argv)
 	b->stack = ft_calloc(sizeof(int), a->len);
 	c->stack = ft_calloc(sizeof(int), a->len);
 	ft_getarg(argv, a, c);
+	if (!sort_check(a->stack))
+	{
+		ft_error("Argument already sorted lol");
+		destroy(a, b, c);
+		exit(0);
+	}
 }
 
 int	main(int argc, char **argv)
 {
-	p_swap	*a;
-	p_swap	*b;
-	p_swap	*c;
+	t_swap	*a;
+	t_swap	*b;
+	t_swap	*c;
 
 	if (ft_argcontrol(argc, argv))
 	{
-		a = ft_calloc(sizeof(p_swap),1);
-		b = ft_calloc(sizeof(p_swap),1);
-		c = ft_calloc(sizeof(p_swap),1);
-		start_struct(a,b,c, argv);
-		//ft_printstack(a);
-		selectinSort(c->stack, c->len, 0);
-		toIndex(a,c);
-		//ft_printstack(c);
-		//ft_printstack(a);
+		//TODO: radix for 1 2 3 4 5, sortcheck not working well, repeat arg check
+		a = ft_calloc(sizeof(t_swap), 1);
+		b = ft_calloc(sizeof(t_swap), 1);
+		c = ft_calloc(sizeof(t_swap), 1);
+		start_struct(a, b, c, argv);
+		selectin_sort(c->stack, c->len, 0);
+		to_index(a, c);
 		radix_sort(a, b);
-		destroy(a,b,c);
+		destroy(a, b, c);
+		system("leaks pushswap");
 	}
 	else
 		ft_error("Invalid Input.");

@@ -6,13 +6,13 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 20:53:50 by egun              #+#    #+#             */
-/*   Updated: 2022/07/17 16:49:12 by egun             ###   ########.fr       */
+/*   Updated: 2022/07/17 20:04:08 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-int	check_sorted_rdx(p_swap *index)
+int	check_sorted_rdx(t_swap *index)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ int	check_sorted_rdx(p_swap *index)
 	return (1);
 }
 
-int	get_max_bits(p_swap *index)
+int	get_max_bits(t_swap *index)
 {
 	int	bit_size;
 	int	size;
@@ -42,7 +42,7 @@ int	get_max_bits(p_swap *index)
 	return (bit_size);
 }
 
-void	radix_sort(p_swap *a, p_swap *b)
+void	radix_sort(t_swap *a, t_swap *b)
 {
 	int		i;
 	int		j;
@@ -58,13 +58,13 @@ void	radix_sort(p_swap *a, p_swap *b)
 		while (j < size)
 		{
 			if (((a->stack[a->len - 1] >> i) & 1) == 0)
-				push(a,b);
+				push(a, b);
 			else
-				rotate(a,1);
+				rotate(a, 1);
 			j++;
 		}
 		i++;
 		while (b->len)
-			push(b,a);
+			push(b, a);
 	}
 }

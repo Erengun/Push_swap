@@ -6,11 +6,11 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 19:01:18 by egun              #+#    #+#             */
-/*   Updated: 2022/07/17 16:01:25 by egun             ###   ########.fr       */
+/*   Updated: 2022/07/17 20:40:11 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	swapIndex(int	*arr, int i, int j)
+void	swap_index(int	*arr, int i, int j)
 {
 	int	temp;
 
@@ -19,27 +19,27 @@ void	swapIndex(int	*arr, int i, int j)
 	arr[j] = temp;
 }
 
-int		minIndex(int *arr, int i, int j)
+int	min_index(int *arr, int i, int j)
 {
 	int	x;
 
 	if (i == j)
 		return (i);
-	x = minIndex(arr, i + 1, j);
-	if(arr[i] < arr[x])
+	x = min_index(arr, i + 1, j);
+	if (arr[i] < arr[x])
 		return (i);
 	return (x);
 }
 
-void	selectinSort(int *stack, int size, int index)
+// Yes it's recursive :)
+void	selectin_sort(int *stack, int size, int index)
 {
-	// Yes it's recursive :)
 	int	min;
 
 	if (size == index)
 		return ;
-	min = minIndex(stack, index, size - 1);
-	if(min != index)
-		swapIndex(stack, index, min);
-	selectinSort(stack, size, index + 1);
+	min = min_index(stack, index, size - 1);
+	if (min != index)
+		swap_index(stack, index, min);
+	selectin_sort(stack, size, index + 1);
 }
