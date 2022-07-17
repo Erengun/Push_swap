@@ -14,9 +14,9 @@ void	ft_printstack(p_swap *x)
 {
 	int	i;
 
-	i = -1;
+	i = x->len;
 	ft_printf("--------------%c Stack-----------\n", x->id);
-	while (++i < x->len)
+	while (--i >= 0)
 		ft_printf("%c[%d]: %d\n", x->id, i, x->stack[i]);
 }
 
@@ -45,10 +45,12 @@ int	main(int argc, char **argv)
 		b = ft_calloc(sizeof(p_swap),1);
 		c = ft_calloc(sizeof(p_swap),1);
 		start_struct(a,b,c, argv);
-		ft_printstack(a);
+		//ft_printstack(a);
 		selectinSort(c->stack, c->len, 0);
 		toIndex(a,c);
-		radix_sort(a,b);
+		//ft_printstack(c);
+		//ft_printstack(a);
+		radix_sort(a, b);
 		destroy(a,b,c);
 	}
 	else

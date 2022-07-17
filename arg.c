@@ -4,7 +4,7 @@ void	ft_error(char *msg)
 {
 	ft_printf(RED"%s\n"RST, msg);
 	ft_printf("error\n");
-	exit(1);
+	exit(0);
 }
 
 void	destroy(p_swap *a, p_swap *b, p_swap *c)
@@ -12,6 +12,7 @@ void	destroy(p_swap *a, p_swap *b, p_swap *c)
 	free(a->stack);
 	free(b->stack);
 	free(c->stack);
+	exit(0);
 }
 
 int	ft_argcontrol(int argc, char **argv)
@@ -26,7 +27,7 @@ int	ft_argcontrol(int argc, char **argv)
 	{
 		j = -1;
 		while (argv[i][++j])
-		if (!ft_isdigit(argv[i][j]))
+		if (!ft_isdigit(argv[i][j]) && argv[i][j] != '-')
 			return (0);
 	}
 	return (1);

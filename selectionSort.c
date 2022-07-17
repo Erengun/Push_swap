@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 19:01:18 by egun              #+#    #+#             */
-/*   Updated: 2022/07/13 20:31:02 by egun             ###   ########.fr       */
+/*   Updated: 2022/07/17 16:01:25 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		minIndex(int *arr, int i, int j)
 	if (i == j)
 		return (i);
 	x = minIndex(arr, i + 1, j);
-	if(arr[i] > arr[x])
+	if(arr[i] < arr[x])
 		return (i);
 	return (x);
 }

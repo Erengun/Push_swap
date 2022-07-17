@@ -16,11 +16,13 @@ void	swap(p_swap *x, int flag)
 
 void	push(p_swap *a, p_swap *b)
 {
-	a->len--;
-	b->len++;
 	if(a->len > 0)
-		b->stack[b->len] = a->stack[a->len];
-	ft_printf("p%c\n",b->id);
+	{
+		b->len++;
+		b->stack[b->len - 1] = a->stack[a->len - 1];
+		a->len--;
+		ft_printf("p%c\n",b->id);
+	}
 }
 
 void	ss(p_swap *a, p_swap *b)
@@ -33,9 +35,9 @@ void	rotate(p_swap *x, int flag)
 {
 	int	temp;
 
-	temp = x->stack[0];
-	ft_memmove(&x->stack[0], &x->stack[1], x->len * 4);
-	x->stack[x->len - 1] = temp;
+	temp = x->stack[x->len - 1];
+	ft_memmove(&x->stack[1], &x->stack[0], (x->len - 1) * 4);
+	x->stack[0] = temp;
 	if (flag)
 		ft_printf("r%c\n", x->id);
 }
@@ -45,7 +47,7 @@ void	r_rotate(p_swap *x, int flag)
 	int	temp;
 
 	temp = x->stack[x->len-1];
-	ft_memmove(&x->stack[1], &x->stack[0], x->len * 4);
+	ft_memmove(&x->stack[0], &x->stack[1], x->len * 4);
 	x->stack[0] = temp;
 	if (flag)
 		ft_printf("rr%c\n", x->id);
