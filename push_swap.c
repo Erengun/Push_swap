@@ -6,11 +6,19 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:34:43 by egun              #+#    #+#             */
-/*   Updated: 2022/07/17 20:55:05 by egun             ###   ########.fr       */
+/*   Updated: 2022/07/30 20:14:13 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
+
+void	ft_error(char *msg)
+{
+	ft_printf(RED"%s\n"RST, msg);
+	ft_printf("error\n");
+	system("leaks push_swap");
+	exit(0);
+}
 
 int	ft_getlen(char **argv)
 {
@@ -45,8 +53,8 @@ void	start_struct(t_swap *a, t_swap *b, t_swap *c, char **argv)
 	ft_getarg(argv, a, c);
 	if (!sort_check(a->stack))
 	{
-		ft_error("Argument already sorted lol");
 		destroy(a, b, c);
+		ft_printf("error\n");
 		exit(0);
 	}
 }
@@ -59,18 +67,21 @@ int	main(int argc, char **argv)
 
 	if (ft_argcontrol(argc, argv))
 	{
-		//TODO: radix for 1 2 3 4 5, sortcheck not working well, repeat arg check
+		//TODO: radix for 1 2 3 4 5, repeat arg check
 		a = ft_calloc(sizeof(t_swap), 1);
 		b = ft_calloc(sizeof(t_swap), 1);
 		c = ft_calloc(sizeof(t_swap), 1);
 		start_struct(a, b, c, argv);
 		selectin_sort(c->stack, c->len, 0);
 		to_index(a, c);
-		radix_sort(a, b);
+		if (a->len < 6)
+			little_sort(a, b);
+		else
+			radix_sort(a, b);
 		destroy(a, b, c);
-		system("leaks pushswap");
+		system("leaks push_swap");
 	}
 	else
-		ft_error("Invalid Input.");
+		ft_printf("error\n");
 	return (0);
 }

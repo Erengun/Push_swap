@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 20:00:10 by egun              #+#    #+#             */
-/*   Updated: 2022/07/17 20:43:47 by egun             ###   ########.fr       */
+/*   Updated: 2022/07/30 18:48:29 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ void	radix_sort(t_swap *a, t_swap *b);
 int		sort_check(int *stack);
 void	destroy(t_swap *a, t_swap *b, t_swap *c);
 void	ft_error(char *msg);
+void	little_sort(t_swap *a, t_swap *b);
+void	swap(t_swap *x, int flag);
 
 #endif

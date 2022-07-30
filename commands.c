@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:36:29 by egun              #+#    #+#             */
-/*   Updated: 2022/07/17 20:36:48 by egun             ###   ########.fr       */
+/*   Updated: 2022/07/30 20:33:15 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,9 @@ void	swap(t_swap *x, int flag)
 {
 	int	temp;
 
-	if (x->stack[0] && x->stack[1])
-	{
-		temp = x->stack[0];
-		x->stack[0] = x->stack[1];
-		x->stack[1] = temp;
-	}
+	temp = x->stack[x->len - 2];
+	x->stack[x->len - 2] = x->stack[x->len - 1];
+	x->stack[x->len - 1] = temp;
 	if (flag)
 		ft_printf("s%c\n", x->id);
 }
@@ -58,9 +55,9 @@ void	r_rotate(t_swap *x, int flag)
 {
 	int	temp;
 
-	temp = x->stack[x->len - 1];
-	ft_memmove(&x->stack[0], &x->stack[1], x->len * 4);
-	x->stack[0] = temp;
+	temp = x->stack[0];
+	ft_memmove(&x->stack[0], &x->stack[1], (x->len - 1) * 4);
+	x->stack[x->len - 1] = temp;
 	if (flag)
 		ft_printf("rr%c\n", x->id);
 }

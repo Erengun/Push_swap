@@ -1,0 +1,57 @@
+#include "push.h"
+
+void	three_sort(t_swap *a)
+{
+	if (a->stack[2] == 0 && a->stack[1] == 2) // 0 2 1
+	{
+		r_rotate(a, 1);
+		swap(a, 1);
+	}
+	else if (a->stack[2] == 1 && a->stack[1] == 0) // 1 0 2
+		swap(a, 1);
+	else if (a->stack[2] == 1 && a->stack[1] == 2) // 1 2 0
+		r_rotate(a, 1);
+	else if (a->stack[2] == 2 && a->stack[1] == 0) // 2 0 1
+		rotate(a, 1);
+	else if (a->stack[2] == 2 && a->stack[1] == 1) // 2 1 0
+	{
+		swap(a, 1);
+		r_rotate(a, 1);
+	}
+}
+
+void	four_sort(t_swap *a, t_swap *b)
+{
+	if (a->stack[3] == 3 || a->stack[2] == 3) // 3 2
+	{
+		if (a->stack[2] == 3)
+			rotate(a, 1);
+		push(a,b);
+		three_sort(a);
+		push(b, a);
+		rotate(a, 1);
+	}
+	else if (a->stack[0] == 3 || a->stack[1] == 3) //
+	{
+		if (a->stack[1] == 3)
+			r_rotate(a, 1);
+		r_rotate(a, 1);
+		push(a,b);
+		three_sort(a);
+		push(b,a);
+		rotate(a ,1 );
+	}
+}
+
+void	little_sort(t_swap *a, t_swap *b)
+{
+	if (a->len == 2)
+		rotate(a, 1);
+	else if (a->len == 3)
+		three_sort(a);
+	else if (a->len == 4)
+		four_sort(a, b);
+	//if (a->len == 5)
+		//five_sort();
+	ft_printstack(a);
+}

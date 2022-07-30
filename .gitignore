@@ -1,0 +1,12 @@
+*.o
+*.a
+*.pdf
+LICENSE
+push_swap
+*.py
+*.md
+checker
+/.idea/
+*.xml
+*.iml
+

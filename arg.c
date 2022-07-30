@@ -6,18 +6,11 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:38:01 by egun              #+#    #+#             */
-/*   Updated: 2022/07/17 20:53:51 by egun             ###   ########.fr       */
+/*   Updated: 2022/07/28 16:47:34 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
-
-void	ft_error(char *msg)
-{
-	ft_printf(RED"%s\n"RST, msg);
-	ft_printf("error\n");
-	exit(0);
-}
 
 void	destroy(t_swap *a, t_swap *b, t_swap *c)
 {
@@ -28,6 +21,22 @@ void	destroy(t_swap *a, t_swap *b, t_swap *c)
 	free(b);
 	free(c);
 	exit(0);
+}
+
+int	repeat_check(int *stack)
+{
+	int	i;
+	int	x;
+
+	i = -1;
+	while(stack[++i])
+	{
+		x = -1;
+		while(stack[++x])
+			if (stack[i] == stack[x])
+				return (1);
+	}
+	return (0);
 }
 
 int	ft_argcontrol(int argc, char **argv)
@@ -42,7 +51,7 @@ int	ft_argcontrol(int argc, char **argv)
 	{
 		j = -1;
 		while (argv[i][++j])
-			if (!ft_isdigit(argv[i][j]) && argv[i][j] != '-')
+			if (!ft_isdigit(argv[i][j]) && argv[i][j] != '-' && argv[i][j] != '+')
 				return (0);
 	}
 	return (1);
@@ -69,13 +78,16 @@ int	sort_check(int *stack)
 	int	i;
 
 	i = 0;
-	while (stack[++i + 1])
+	if (!repeat_check(stack))
+		return (1);
+	while (stack[i + 1])
 	{
+		if (stack[i] > 2147483647)
+			return (1);
 		if (stack[i] > stack[i + 1])
-			return(1);
-			//return (0);
+			i++;
 		else
-			continue ;
+			return (1);
 	}
-	return (1);
+	return (0);
 }

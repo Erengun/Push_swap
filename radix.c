@@ -6,13 +6,13 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 20:53:50 by egun              #+#    #+#             */
-/*   Updated: 2022/07/17 20:04:08 by egun             ###   ########.fr       */
+/*   Updated: 2022/07/28 06:00:16 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-int	check_sorted_rdx(t_swap *index)
+int	radix_sort_check(t_swap *index)
 {
 	int	i;
 
@@ -25,6 +25,28 @@ int	check_sorted_rdx(t_swap *index)
 			return (0);
 	}
 	return (1);
+}
+
+void	radix_b(t_swap *a, t_swap *b, int i, int max)
+{
+	int	b_len;
+
+	b_len = b->len;
+	while (b_len-- && radix_sort_check(b) && i < max)
+	{
+		if (((b->stack[b_len - 1] >> i) & 1) == 0)
+			rotate(b, 1);
+		else
+			push(b, a);
+	}
+}
+
+void	radix_a(t_swap *a, t_swap *b, int i)
+{
+	if (((a->stack[a->len - 1] >> i) & 1) == 0)
+		push(a, b);
+	else
+		rotate(a, 1);
 }
 
 int	get_max_bits(t_swap *index)
@@ -57,13 +79,11 @@ void	radix_sort(t_swap *a, t_swap *b)
 		size = a->len;
 		while (j < size)
 		{
-			if (((a->stack[a->len - 1] >> i) & 1) == 0)
-				push(a, b);
-			else
-				rotate(a, 1);
+			radix_a(a, b, i);
 			j++;
 		}
 		i++;
+		radix_b(a, b, i, max_bits);
 		while (b->len)
 			push(b, a);
 	}

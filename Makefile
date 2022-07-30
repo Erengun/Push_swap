@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CFLAGSS = -Wall -Wextra -Werror
-SRCS = commands.c arg.c push_swap.c selectionSort.c utils.c radix.c
+SRCS = commands.c arg.c push_swap.c selectionSort.c utils.c radix.c single_sort.c
 OBJS = $(SRCS:.c=.o)
 NAME = push_swap
 CC = gcc
