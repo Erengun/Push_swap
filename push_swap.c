@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:34:43 by egun              #+#    #+#             */
-/*   Updated: 2022/07/30 20:14:13 by egun             ###   ########.fr       */
+/*   Updated: 2022/07/31 16:16:18 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_error(char *msg)
 {
 	ft_printf(RED"%s\n"RST, msg);
 	ft_printf("error\n");
-	system("leaks push_swap");
 	exit(0);
 }
 
@@ -40,8 +39,13 @@ void	ft_printstack(t_swap *x)
 		ft_printf("%c[%d]: %d\n", x->id, i, x->stack[i]);
 }
 
-void	start_struct(t_swap *a, t_swap *b, t_swap *c, char **argv)
+void	start_struct(t_swap *a, t_swap *b, t_swap *c, char **av, int argc)
 {
+	char	**argv = ft_calloc(9999, 1);
+
+	argv = av;
+	if (argc == 2)
+		argv = ft_split(av[1], ' ');
 	a->len = ft_getlen(argv);
 	c->len = a->len;
 	a->id = 'a';
@@ -50,11 +54,12 @@ void	start_struct(t_swap *a, t_swap *b, t_swap *c, char **argv)
 	a->stack = ft_calloc(sizeof(int), a->len);
 	b->stack = ft_calloc(sizeof(int), a->len);
 	c->stack = ft_calloc(sizeof(int), a->len);
+	ft_printf(BMAG"%d\n"RST, a->len);
 	ft_getarg(argv, a, c);
-	if (!sort_check(a->stack))
+	if (!sort_check(a->stack, a->len))
 	{
 		destroy(a, b, c);
-		ft_printf("error\n");
+		ft_printf("Errorr\n");
 		exit(0);
 	}
 }
@@ -67,11 +72,11 @@ int	main(int argc, char **argv)
 
 	if (ft_argcontrol(argc, argv))
 	{
-		//TODO: radix for 1 2 3 4 5, repeat arg check
+		//TODO: get_len broken fix
 		a = ft_calloc(sizeof(t_swap), 1);
 		b = ft_calloc(sizeof(t_swap), 1);
 		c = ft_calloc(sizeof(t_swap), 1);
-		start_struct(a, b, c, argv);
+		start_struct(a, b, c, argv, argc);
 		selectin_sort(c->stack, c->len, 0);
 		to_index(a, c);
 		if (a->len < 6)
@@ -79,9 +84,9 @@ int	main(int argc, char **argv)
 		else
 			radix_sort(a, b);
 		destroy(a, b, c);
-		system("leaks push_swap");
 	}
 	else
-		ft_printf("error\n");
+		ft_printf("Erroadsr\n");
 	return (0);
+	exit(0);
 }

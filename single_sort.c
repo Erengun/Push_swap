@@ -31,7 +31,7 @@ void	four_sort(t_swap *a, t_swap *b)
 		push(b, a);
 		rotate(a, 1);
 	}
-	else if (a->stack[0] == 3 || a->stack[1] == 3) //
+	else
 	{
 		if (a->stack[1] == 3)
 			r_rotate(a, 1);
@@ -43,6 +43,32 @@ void	four_sort(t_swap *a, t_swap *b)
 	}
 }
 
+void	five_sort(t_swap *a, t_swap *b)
+{
+	if (a->stack[4] == 4 || a->stack[3] == 4)
+	{
+		if (a->stack[1] == 4)
+			rotate(a, 1);
+		if (a->stack[a->len - 1] != 4)
+			rotate(a, 1);
+		push(a, b);
+		four_sort(a, b);
+		push(b, a);
+		rotate(a, 1);
+	}
+	else if (a->stack[2] == 4 || a->stack[1] == 4 || a->stack[0] == 4)
+	{
+		r_rotate(a, 1);
+		r_rotate(a, 1);
+		if (a->stack[0] == 4)
+			r_rotate(a, 1);
+		push(a, b);
+		four_sort(a, b);
+		push(b, a);
+		rotate(a, 1);
+	}
+}
+
 void	little_sort(t_swap *a, t_swap *b)
 {
 	if (a->len == 2)
@@ -51,7 +77,6 @@ void	little_sort(t_swap *a, t_swap *b)
 		three_sort(a);
 	else if (a->len == 4)
 		four_sort(a, b);
-	//if (a->len == 5)
-		//five_sort();
-	ft_printstack(a);
+	else
+		five_sort(a, b);
 }

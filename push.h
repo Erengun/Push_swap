@@ -6,14 +6,14 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 20:00:10 by egun              #+#    #+#             */
-/*   Updated: 2022/07/30 18:48:29 by egun             ###   ########.fr       */
+/*   Updated: 2022/07/31 08:54:07 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_H
 # define PUSH_H
 
-//! SİL
+//!TODO: SİL
 # include <fcntl.h>
 # include "ft_printf/ft_printf.h"
 # include "ft_printf/libft/libft.h"
@@ -27,8 +27,8 @@ typedef struct s_swap
 
 void	ft_printstack(t_swap *s);
 void	push(t_swap *a, t_swap *b);
-void	ft_stacklen(t_swap *x);
 void	ft_getarg(char **argv, t_swap *a, t_swap *c);
+void 	get_str_arg(char **argv, t_swap *a, t_swap *c);
 int		ft_argcontrol(int argc, char **argv);
 void	ss(t_swap *a, t_swap *b);
 void	rotate(t_swap *x, int flag);
@@ -38,10 +38,11 @@ void	rr(t_swap *a, t_swap *b, int flag);
 void	selectin_sort(int *stack, int size, int index);
 void	to_index(t_swap *a, t_swap *c);
 void	radix_sort(t_swap *a, t_swap *b);
-int		sort_check(int *stack);
+int		sort_check(int *stack, int len);
 void	destroy(t_swap *a, t_swap *b, t_swap *c);
 void	ft_error(char *msg);
 void	little_sort(t_swap *a, t_swap *b);
 void	swap(t_swap *x, int flag);
+int		repeat_check(int *stack, int len);
 
 #endif
