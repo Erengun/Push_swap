@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:38:01 by egun              #+#    #+#             */
-/*   Updated: 2022/08/01 18:22:18 by egun             ###   ########.fr       */
+/*   Updated: 2022/08/01 18:22:31 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,13 @@ int	sort_check(int *stack, int len)
 	{
 		x = i;
 		while (++x < len)
+		{
 			if (stack[i] == stack[x])
 			{
 				ft_printf("Error\n");
 				return (0);
 			}
+		}
 	}
 	i = 0;
 	while (i + 1 < len)
