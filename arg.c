@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:38:01 by egun              #+#    #+#             */
-/*   Updated: 2022/08/01 18:22:31 by egun             ###   ########.fr       */
+/*   Updated: 2022/08/01 18:37:49 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void	ft_getarg(char **argv, t_swap *a, t_swap *b, t_swap *c)
 	i = 0;
 	while (i <= a->len)
 	{
-		if (ft_atoi(argv[len]) == -1)
+		if (ft_atoi(argv[len]) == -1
+			&& argv[len][0] != '-' && argv[len][0] != '+')
 		{
 			ft_printf("Error\n");
 			destroy(a, b, c);
