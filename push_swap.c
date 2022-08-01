@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:34:43 by egun              #+#    #+#             */
-/*   Updated: 2022/08/01 18:20:29 by egun             ###   ########.fr       */
+/*   Updated: 2022/08/01 18:20:56 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,6 @@ int	main(int argc, char **argv)
 		destroy(a, b, c);
 	}
 	else if (*(argv[1]) && argc >= 2)
-		ft_printf("Error\n");
+		ft_printf("%e", "Error\n");
 	return (0);
 }

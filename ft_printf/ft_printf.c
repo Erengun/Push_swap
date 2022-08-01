@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:30:00 by egun              #+#    #+#             */
-/*   Updated: 2022/02/08 20:06:45 by egun             ###   ########.fr       */
+/*   Updated: 2022/02/09 18:57:48 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	arg_printer(char c, va_list macro)
 		return (write(1, &erochar, 1));
 	}
 	if (c == 's')
-		return (ft_putstr(va_arg(macro, char *)));
+		return (ft_putstr(va_arg(macro, char *), 1));
+	if (c == 'e')
+		return (ft_putstr(va_arg(macro, char *), 2));
 	if (c == 'p')
 		return (ft_putpointer(va_arg(macro, unsigned long int)));
 	if (c == 'd' || c == 'i')
@@ -34,7 +36,7 @@ int	arg_printer(char c, va_list macro)
 	if (c == 'X')
 		return (ft_puthex(va_arg(macro, unsigned int), "0123456789ABCDEF"));
 	if (c == '%')
-		return (ft_putstr("%"));
+		return (ft_putstr("%", 1));
 	return (0);
 }
 

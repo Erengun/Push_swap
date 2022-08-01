@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 20:50:03 by egun              #+#    #+#             */
-/*   Updated: 2022/05/13 15:28:25 by egun             ###   ########.fr       */
+/*   Created: 2022/08/01 19:01:37 by egun              #+#    #+#             */
+/*   Updated: 2022/08/01 19:01:37 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define YEL "\e[0;33m"
 # define BLU "\e[0;34m"
 # define MAG "\e[0;35m"
-# define CYN "c"
+# define CYN "\e[0;36m"
 # define WHT "\e[0;37m"
 
 //Regular bold text

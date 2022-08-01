@@ -4,7 +4,6 @@ LIBFT=libft/libft.a
 SRCS=ft_printf.c printf_utils.c
 OBJS=$(SRCS:.c=.o)
 
-BONUS_OBJS=$(BONUS:.c=.o)
 
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror
@@ -16,22 +15,120 @@ CFLAGS=-Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@make bonus -C ./libft
-	@cp libft/libft.a $(NAME)
-	@ar rcs $@ $(OBJS)
+	make bonus -C ./libft
+	cp libft/libft.a $(NAME)
+	ar rcs $@ $(OBJS)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c $^
+	$(CC) $(CFLAGS) -c $^
 
 clean:
-	@make clean -C ./libft
-	@rm -f $(OBJS) $(BONUS_OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	@make fclean -C ./libft
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
-	@make re -C ./libf
+
+coffee:
+	@clear
+	@echo ""
+	@echo "                   ("
+	@echo "	                     )     ("
+	@echo "               ___...(-------)-....___"
+	@echo '           .-""       )    (          ""-.'
+	@echo "      .-''''|-._             )         _.-|"
+	@echo '     /  .--.|   `""---...........---""`   |'
+	@echo "    /  /    |                             |"
+	@echo "    |  |    |                             |"
+	@echo "     \  \   |                             |"
+	@echo "      '\ '\ |                             |"
+	@echo "        '\ '|                             |"
+	@echo "        _/ /\                             /"
+	@echo "       (__/  \                           /"
+	@echo '    _..---""` \                         /`""---.._'
+	@echo " .-'           \                       /          '-."
+	@echo ":               '-.__             __.-'              :"
+	@echo ':                  ) ""---...---"" (                :'
+	@echo "\'._                '"--...___...--"'              _.'"
+	@echo '   \""--..__                              __..--""/'
+	@echo "     '._     """----.....______.....----"""         _.'"
+	@echo '         ""--..,,_____            _____,,..--"""'''
+	@echo '                      """------"""'
+	@sleep 0.5
+	@clear
+	@echo ""
+	@echo "                 ("
+	@echo "	                  )      ("
+	@echo "               ___..(.------)--....___"
+	@echo '           .-""       )   (           ""-.'
+	@echo "      .-''''|-._      (       )        _.-|"
+	@echo '     /  .--.|   `""---...........---""`   |'
+	@echo "    /  /    |                             |"
+	@echo "    |  |    |                             |"
+	@echo "     \  \   |                             |"
+	@echo "      '\ '\ |                             |"
+	@echo "        '\ '|                             |"
+	@echo "        _/ /\                             /"
+	@echo "       (__/  \                           /"
+	@echo '    _..---""` \                         /`""---.._'
+	@echo " .-'           \                       /          '-."
+	@echo ":               '-.__             __.-'              :"
+	@echo ':                  ) ""---...---"" (                :'
+	@echo "\'._                '"--...___...--"'              _.'"
+	@echo '   \""--..__                              __..--""/'
+	@echo "     '._     """----.....______.....----"""         _.'"
+	@echo '         ""--..,,_____            _____,,..--"""'''
+	@echo '                      """------"""'
+	@sleep 0.5
+	@clear
+	@echo ""
+	@echo "               ("
+	@echo "	                  )     ("
+	@echo "               ___..(.------)--....___"
+	@echo '           .-""      )    (           ""-.'
+	@echo "      .-''''|-._      (       )        _.-|"
+	@echo '     /  .--.|   `""---...........---""`   |'
+	@echo "    /  /    |                             |"
+	@echo "    |  |    |                             |"
+	@echo "     \  \   |                             |"
+	@echo "      '\ '\ |                             |"
+	@echo "        '\ '|                             |"
+	@echo "        _/ /\                             /"
+	@echo "       (__/  \                           /"
+	@echo '    _..---""` \                         /`""---.._'
+	@echo " .-'           \                       /          '-."
+	@echo ":               '-.__             __.-'              :"
+	@echo ':                  ) ""---...---"" (                :'
+	@echo "\'._                '"--...___...--"'              _.'"
+	@echo '   \""--..__                              __..--""/'
+	@echo "     '._     """----.....______.....----"""         _.'"
+	@echo '         ""--..,,_____            _____,,..--"""'''
+	@echo '                      """------"""'
+	@sleep 0.5
+	@clear
+	@echo ""
+	@echo "             (         ) "
+	@echo "	              )        ("
+	@echo "               ___)...----)----....___"
+	@echo '           .-""      )    (           ""-.'
+	@echo "      .-''''|-._      (       )        _.-|"
+	@echo '     /  .--.|   `""---...........---""`   |'
+	@echo "    /  /    |                             |"
+	@echo "    |  |    |                             |"
+	@echo "     \  \   |                             |"
+	@echo "      '\ '\ |                             |"
+	@echo "        '\ '|                             |"
+	@echo "        _/ /\                             /"
+	@echo "       (__/  \                           /"
+	@echo '    _..---""` \                         /`""---.._'
+	@echo " .-'           \                       /          '-."
+	@echo ":               '-.__             __.-'              :"
+	@echo ':                  ) ""---...---"" (                :'
+	@echo "\'._                '"--...___...--"'              _.'"
+	@echo '   \""--..__                              __..--""/'
+	@echo "     '._     """----.....______.....----"""         _.'"
+	@echo '         ""--..,,_____            _____,,..--"""'''
+	@echo '                      """------"""'
 
 .PHONY: all clean fclean re bonus

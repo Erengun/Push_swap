@@ -6,7 +6,7 @@
 #    By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 11:28:34 by egun              #+#    #+#              #
-#    Updated: 2022/05/13 15:14:58 by egun             ###   ########.fr        #
+#    Updated: 2022/02/06 18:07:49 by egun             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,18 +64,18 @@ NAME = libft.a
 all:$(NAME)
 
 $(NAME): $(OBJS)
-	@ar -rcs $(NAME) $(OBJS)
+	ar -rcs $(NAME) $(OBJS)
 
 %.o : %.c
-	@$(CC) $(CFLAGS)  -c $<	-o $@ 
+	$(CC) $(CFLAGS)  -c $<	-o $@ 
 clean:
-	@rm -f $(OBJS)
+	rm -f $(OBJS)
 
 fclean: clean
-	@rm -f $(NAME) $(B_obj)
+	rm -f $(NAME) $(B_obj)
 
 bonus : $(OBJS) $(B_obj)
-	@ar -rcs $(NAME) $(OBJS) $(B_obj)
+	ar -rcs $(NAME) $(OBJS) $(B_obj)
 re:fclean $(NAME)
 
 .PHONY: clean fclean all re bonus

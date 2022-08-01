@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:38:01 by egun              #+#    #+#             */
-/*   Updated: 2022/08/01 18:37:49 by egun             ###   ########.fr       */
+/*   Updated: 2022/08/01 18:39:53 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_getarg(char **argv, t_swap *a, t_swap *b, t_swap *c)
 		if (ft_atoi(argv[len]) == -1
 			&& argv[len][0] != '-' && argv[len][0] != '+')
 		{
-			ft_printf("Error\n");
+			ft_printf("%e", "Error\n");
 			destroy(a, b, c);
 			exit(0);
 		}
@@ -95,7 +95,7 @@ int	sort_check(int *stack, int len)
 		{
 			if (stack[i] == stack[x])
 			{
-				ft_printf("Error\n");
+				ft_printf("%e", "Error\n");
 				return (0);
 			}
 		}
