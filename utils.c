@@ -12,6 +12,16 @@
 
 #include "push.h"
 
+void	ft_printstack(t_swap *x)
+{
+	int	i;
+
+	i = x->len;
+	ft_printf("--------------%c Stack-----------\n", x->id);
+	while (--i >= 0)
+		ft_printf("%c[%d]: %d\n", x->id, i, x->stack[i]);
+}
+
 int	find_index(int *arr, int x, int size)
 {
 	int	i;

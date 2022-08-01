@@ -28,7 +28,7 @@ typedef struct s_swap
 void	ft_printstack(t_swap *s);
 void	push(t_swap *a, t_swap *b);
 void	ft_getarg(char **argv, t_swap *a, t_swap *c);
-void 	get_str_arg(char **argv, t_swap *a, t_swap *c);
+void	free_argv(char **argv);
 int		ft_argcontrol(int argc, char **argv);
 void	ss(t_swap *a, t_swap *b);
 void	rotate(t_swap *x, int flag);
