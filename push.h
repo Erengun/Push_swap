@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 20:00:10 by egun              #+#    #+#             */
-/*   Updated: 2022/07/31 08:54:07 by egun             ###   ########.fr       */
+/*   Updated: 2022/08/01 17:04:09 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_swap
 
 void	ft_printstack(t_swap *s);
 void	push(t_swap *a, t_swap *b);
-void	ft_getarg(char **argv, t_swap *a, t_swap *c);
+void	ft_getarg(char **argv, t_swap *a, t_swap *b, t_swap *c);
 void	free_argv(char **argv);
 int		ft_argcontrol(int argc, char **argv);
 void	ss(t_swap *a, t_swap *b);
@@ -40,7 +40,6 @@ void	to_index(t_swap *a, t_swap *c);
 void	radix_sort(t_swap *a, t_swap *b);
 int		sort_check(int *stack, int len);
 void	destroy(t_swap *a, t_swap *b, t_swap *c);
-void	ft_error(char *msg);
 void	little_sort(t_swap *a, t_swap *b);
 void	swap(t_swap *x, int flag);
 int		repeat_check(int *stack, int len);

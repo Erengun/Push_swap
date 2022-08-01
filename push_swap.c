@@ -6,18 +6,11 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:34:43 by egun              #+#    #+#             */
-/*   Updated: 2022/08/01 15:46:47 by egun             ###   ########.fr       */
+/*   Updated: 2022/08/01 18:20:29 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
-
-void	ft_error(char *msg)
-{
-	ft_printf(RED"%s\n"RST, msg);
-	ft_printf("error\n");
-	exit(0);
-}
 
 int	ft_getlen(char **argv)
 {
@@ -48,11 +41,10 @@ void	start_struct(t_swap *a, t_swap *b, t_swap *c, char **argv)
 	a->stack = ft_calloc(sizeof(int), a->len);
 	b->stack = ft_calloc(sizeof(int), a->len);
 	c->stack = ft_calloc(sizeof(int), a->len);
-	ft_getarg(argv, a, c);
+	ft_getarg(argv, a, b, c);
 	if (!sort_check(a->stack, a->len))
 	{
 		destroy(a, b, c);
-		ft_printf("Error\n");
 		exit(0);
 	}
 }
@@ -63,7 +55,7 @@ int	main(int argc, char **argv)
 	t_swap	*b;
 	t_swap	*c;
 
-	if (ft_argcontrol(argc, argv))
+	if (ft_argcontrol(argc, argv) && *argv[1] && argc >= 2)
 	{
 		a = ft_calloc(sizeof(t_swap), 1);
 		b = ft_calloc(sizeof(t_swap), 1);
@@ -80,7 +72,7 @@ int	main(int argc, char **argv)
 			free_argv(argv);
 		destroy(a, b, c);
 	}
-	else
+	else if (*(argv[1]) && argc >= 2)
 		ft_printf("Error\n");
 	return (0);
 }
