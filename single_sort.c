@@ -70,7 +70,8 @@ void	five_sort(t_swap *a, t_swap *b)
 	}
 	else if (a->stack[2] == 4 || a->stack[1] == 4 || a->stack[0] == 4)
 	{
-		r_rotate(a, 1);
+		if (a->stack[0] != 4)
+			r_rotate(a, 1);
 		r_rotate(a, 1);
 		if (a->stack[0] == 4)
 			r_rotate(a, 1);
