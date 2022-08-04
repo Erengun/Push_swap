@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:48:25 by egun              #+#    #+#             */
-/*   Updated: 2022/08/01 15:48:25 by egun             ###   ########.fr       */
+/*   Updated: 2022/08/04 18:43:58 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ void	four_sort(t_swap *a, t_swap *b)
 			rotate(a, 1);
 		push(a, b);
 		three_sort(a);
-		push(b, a);
-		rotate(a, 1);
 	}
 	else
 	{
@@ -50,12 +48,12 @@ void	four_sort(t_swap *a, t_swap *b)
 		r_rotate(a, 1);
 		push(a, b);
 		three_sort(a);
-		push(b, a);
-		rotate(a, 1);
 	}
+	push(b, a);
+	rotate(a, 1);
 }
 
-void	five_sort(t_swap *a, t_swap *b)
+void	five_sort(t_swap *a)
 {
 	if (a->stack[4] == 4 || a->stack[3] == 4)
 	{
@@ -63,22 +61,22 @@ void	five_sort(t_swap *a, t_swap *b)
 			rotate(a, 1);
 		if (a->stack[a->len - 1] != 4)
 			rotate(a, 1);
-		push(a, b);
-		four_sort(a, b);
-		push(b, a);
-		rotate(a, 1);
 	}
 	else if (a->stack[2] == 4 || a->stack[1] == 4 || a->stack[0] == 4)
 	{
-		if (a->stack[0] != 4)
+		if (a->stack[2] == 4)
+		{
+			rotate(a, 1);
+			rotate(a, 1);
+		}
+		else
+		{
+			if (a->stack[0] != 4)
+				r_rotate(a, 1);
 			r_rotate(a, 1);
-		r_rotate(a, 1);
-		if (a->stack[0] == 4)
-			r_rotate(a, 1);
-		push(a, b);
-		four_sort(a, b);
-		push(b, a);
-		rotate(a, 1);
+			if (a->stack[0] == 4)
+				r_rotate(a, 1);
+		}
 	}
 }
 
@@ -90,6 +88,12 @@ void	little_sort(t_swap *a, t_swap *b)
 		three_sort(a);
 	else if (a->len == 4)
 		four_sort(a, b);
-	else
-		five_sort(a, b);
+	else if (a->len == 5)
+	{
+		five_sort(a);
+		push(a, b);
+		four_sort(a, b);
+		push(b, a);
+		rotate(a, 1);
+	}
 }

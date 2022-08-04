@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:34:43 by egun              #+#    #+#             */
-/*   Updated: 2022/08/01 18:20:56 by egun             ###   ########.fr       */
+/*   Updated: 2022/08/04 18:30:47 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,28 @@ int	ft_getlen(char **argv)
 
 char	**argv_init(char **argv, int argc)
 {
+	char	*buffer;
+	char	*tmp;
+	int		i;
+
 	if (argc == 2)
 		argv = ft_split(argv[1], ' ');
 	else
-		argv++;
+	{
+		i = 1;
+		buffer = ft_strdup("");
+		while (i < argc)
+		{
+			tmp = buffer;
+			buffer = ft_strjoin(buffer, argv[i]);
+			free(tmp);
+			tmp = buffer;
+			buffer = ft_strjoin(buffer, " ");
+			free(tmp);
+			++i;
+		}
+		argv = ft_split(buffer, ' ');
+	}
 	return (argv);
 }
 
@@ -55,7 +73,7 @@ int	main(int argc, char **argv)
 	t_swap	*b;
 	t_swap	*c;
 
-	if (ft_argcontrol(argc, argv) && *argv[1] && argc >= 2)
+	if (ft_argcontrol(argc, argv) && argv[1] && *argv[1] && argc >= 2)
 	{
 		a = ft_calloc(sizeof(t_swap), 1);
 		b = ft_calloc(sizeof(t_swap), 1);
@@ -72,7 +90,7 @@ int	main(int argc, char **argv)
 			free_argv(argv);
 		destroy(a, b, c);
 	}
-	else if (*(argv[1]) && argc >= 2)
+	else if (argv[1] && *(argv[1]) && argc >= 2)
 		ft_printf("%e", "Error\n");
 	return (0);
 }

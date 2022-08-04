@@ -13,8 +13,6 @@
 #ifndef PUSH_H
 # define PUSH_H
 
-//!TODO: SİL
-# include <fcntl.h>
 # include "ft_printf/ft_printf.h"
 # include "ft_printf/libft/libft.h"
 

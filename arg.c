@@ -64,8 +64,7 @@ void	ft_getarg(char **argv, t_swap *a, t_swap *b, t_swap *c)
 	i = 0;
 	while (i <= a->len)
 	{
-		if (ft_atoi(argv[len]) == -1
-			&& argv[len][0] != '-' && argv[len][0] != '+')
+		if (ft_atol(argv[len]) > 2147483647 || ft_atol(argv[len]) < -2147483648)
 		{
 			ft_printf("%e", "Error\n");
 			destroy(a, b, c);

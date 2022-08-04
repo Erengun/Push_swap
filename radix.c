@@ -6,7 +6,7 @@
 /*   By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 20:53:50 by egun              #+#    #+#             */
-/*   Updated: 2022/07/28 06:00:16 by egun             ###   ########.fr       */
+/*   Updated: 2022/08/04 18:51:54 by egun             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,13 @@ void	radix_b(t_swap *a, t_swap *b, int i, int max)
 
 void	radix_a(t_swap *a, t_swap *b, int i)
 {
-	if (((a->stack[a->len - 1] >> i) & 1) == 0)
-		push(a, b);
-	else
-		rotate(a, 1);
+	if (radix_sort_check(a) == 0)
+	{
+		if (((a->stack[a->len - 1] >> i) & 1) == 0)
+			push(a, b);
+		else
+			rotate(a, 1);
+	}
 }
 
 int	get_max_bits(t_swap *index)

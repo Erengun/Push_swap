@@ -35,7 +35,7 @@ clean:
 fclean: clean
 	make fclean -C ft_printf/
 
-re: clean all
+re: fclean all
 
 norm:
 	@norminette *.[ch]

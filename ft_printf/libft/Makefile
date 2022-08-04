@@ -6,7 +6,7 @@
 #    By: egun <egun@student.42istanbul.com.tr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 11:28:34 by egun              #+#    #+#              #
-#    Updated: 2022/02/06 18:07:49 by egun             ###   ########.fr        #
+#    Updated: 2022/08/04 17:43:41 by egun             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ list = ft_bzero.c \
 		ft_putstr_fd.c \
 		ft_strmapi.c \
 		ft_striteri.c \
-		ft_itoa.c
+		ft_itoa.c \
+		ft_atol.c
 
 Bonus_src = ft_lstnew.c \
 			ft_lstadd_back.c \
